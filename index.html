@@ -29,7 +29,7 @@
                     <h2>a better way to camp</h2>
                 </div>
                 <div class="col col-md-4 col-xl-2 mt-4">
-                    <a role="button" data-toggle="modal" data-target="#reserveModal" class="btn btn-lg btn-info">Reserve Campsite</a>
+                    <a role="button" data-toggle="modal" data-target="#reserveModal" class="btn btn-lg btn-info text-nowrap">Reserve Campsite</a>
                 </div>
             </div>
     </header>
@@ -71,10 +71,10 @@
                                 <div class="col-2 btn-group btn-group-toggle" data-toggle="buttons">
                                     <label class="btn btn-success active">
                                         <input type="radio" name="siteType" id="siteTent" autocomplete="off" checked> Tent
-                                      </label>
-                                      <label class="btn btn-primary">
+                                    </label>
+                                    <label class="btn btn-primary">
                                         <input type="radio" name="siteType" id="siteRV" autocomplete="off"> RV
-                                      </label>
+                                    </label>
                                     </div>
                                 </div>
                         </div>
@@ -191,6 +191,9 @@
                         <span class="carousel-control-next-icon"></span>
                         <span class="sr-only">Next</span>
                     </a>
+                        <button class="btn btn-danger" id="carouselButton">
+                            <i class="fa fa-pause"></i>
+                        </button>
                 </div>
             </div>
         </div>
@@ -281,6 +284,22 @@
         <script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
         <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
     
+        <script>
+            $(function() {
+                $(".carousel").carousel( { interval: 2000 } );
+                $("#carouselButton").click(function(){
+                    if ($("#carouselButton").children("i").hasClass("fa-pause")) {
+                        $(".carousel").carousel("pause");
+                        $("#carouselButton").children("i").removeClass("fa-pause");
+                        $("#carouselButton").children("i").addClass("fa-play");
+                    } else {
+                        $(".carousel").carousel("cycle");
+                        $("#carouselButton").children("i").removeClass("fa-play");
+                        $("#carouselButton").children("i").addClass("fa-pause"); 
+                    }
+                });
+            });
+        </script>
     
 </body>
 </html>
